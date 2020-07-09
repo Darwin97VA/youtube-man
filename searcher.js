@@ -7,10 +7,6 @@ module.exports = async () => {
 			'--disable-setuid-sandbox',
 		]
 	})
-	//{
-		// headless: false,
-		// executablePath: '/usr/bin/chromium'
-	//});
 	const page = await browser.newPage();
 	await page.goto('https://www.youtube.com')
 	return async text => {
@@ -28,12 +24,11 @@ module.exports = async () => {
 				const channel = res.querySelector('#channel-name a')
 				const meta = res.querySelectorAll('#metadata-line>span')
 				result = {
+					time: res.querySelector('span.ytd-thumbnail-overlay-time-status-renderer').innerText,
 					url: href,
 					title: innerText,
-					channel: {
-						name: channel.innerText,
-						url: channel.href
-					},
+					channelName: channel.innerText,
+					channelUrl: channel.href,
 					views: meta[0].innerText.split(' ')[0],
 					ago: meta[1].innerText.slice(0, -4),
 					description: res.querySelector('#description-text').innerText
