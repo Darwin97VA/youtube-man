@@ -1,7 +1,9 @@
-const ppt = require('puppeteer-core')
+const ppt = require('puppeteer')
 
 module.exports = async () => {
-	const browser = await ppt.launch()
+	const browser = await ppt.launch({
+		args: ['--no-sandbox']
+	})
 	//{
 		// headless: false,
 		// executablePath: '/usr/bin/chromium'
