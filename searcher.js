@@ -2,7 +2,10 @@ const ppt = require('puppeteer')
 
 module.exports = async () => {
 	const browser = await ppt.launch({
-		args: ['--no-sandbox']
+		args: [
+			'--no-sandbox',
+			'--disable-setuid-sandbox',
+		]
 	})
 	//{
 		// headless: false,
