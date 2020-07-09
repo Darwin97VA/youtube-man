@@ -37,9 +37,7 @@ module.exports = async () => {
 					ago: meta[1].innerText.slice(0, -4),
 					description: res.querySelector('#description-text').innerText
 				}
-				} catch(e) {
-				result = e
-				}
+				} catch(e) {}
 				return result
 			}).filter(el=>el)
 		}, text)
