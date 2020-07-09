@@ -23,8 +23,12 @@ module.exports = async () => {
 				const { href, innerText } = res.querySelector('a#video-title')
 				const channel = res.querySelector('#channel-name a')
 				const meta = res.querySelectorAll('#metadata-line>span')
+				var time
+				try {
+				time = res.querySelector('span.ytd-thumbnail-overlay-time-status-renderer').innerText.trim()
+				} catch(e) {}
 				result = {
-					time: res.querySelector('span.ytd-thumbnail-overlay-time-status-renderer').innerText.trim(),
+					time,
 					url: href,
 					title: innerText,
 					channelName: channel.innerText,
