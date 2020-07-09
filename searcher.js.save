@@ -1,0 +1,31 @@
+const ppt = require('puppeteer-core');
+
+const page = puppeteer.launch({
+	headless: true,
+	executablePath: '/usr/bin/chromium'
+}).then(navigator => navigator.newPage())
+
+const search = async search => {
+	
+}
+
+const init = async () => {
+	const browser = await ppt.launch({
+		headless: true,
+		executablePath: '/usr/bin/chromium',
+	});
+	const page = await browser.newPage();
+	await page.goto('https://www.youtube.com');
+	const searcher = async text => {
+		await page.type('input#search', text)
+		await page.click('button#search-icon-legacy')
+		await Promise.all([
+		page.evaluate(text => {
+			[...document.querySelectorAll('#contents ytd-video-renderer')]
+		page.waitForNavigation({ waitUntil: 'networkidle0' }),
+		])
+	}
+	await browser.close();
+}
+
+export default searcher
