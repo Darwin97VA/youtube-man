@@ -1,10 +1,11 @@
 const ppt = require('puppeteer-core')
 
 module.exports = async () => {
-	const browser = await ppt.launch({
+	const browser = await ppt.launch()
+	//{
 		// headless: false,
-		executablePath: '/usr/bin/chromium'
-	});
+		// executablePath: '/usr/bin/chromium'
+	//});
 	const page = await browser.newPage();
 	await page.goto('https://www.youtube.com')
 	return async text => {
